@@ -1,5 +1,5 @@
-time = kp_0_0620{4}.Values.Time;
-response = kp_0_0620{4}.Values.Data;
+time = kp_0_0645{1}.Values.Time;
+response = kp_0_0645{1}.Values.Data;
 final_value = 180*2*pi/360;
 
 % Compute step response characteristics
