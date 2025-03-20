@@ -12,6 +12,12 @@ R = 3.18;
 b = 7.76e-5;
 J = 5.86e-5;
 
+% 
+% kp = 1.927;
+% ki = 0.688;
+% kd = 1.349;
+% N = 2000;
+
 % Single Loop Control
 kp = 0.0645;
 time = Lm/R;
@@ -19,14 +25,9 @@ N_2 = mp*L*L*Lm + Lm*J;
 N_1 = R*J + Lm*b + mp*L*L*R;
 N_0 = R*b + ke*kt;
 
-kp = 0.0645;
-ki = 0;
-kd = 0;
-N = 0;
-
 plant = tf(kt, [N_2 N_1 N_0]);
 integrator = tf([1], [1 0]);
 system = (integrator*plant);
 % closedLoopSystem = feedback(plant * integrator * kp, 1);
 % 
-% controlSystemDesigner('rlocus', system);
+controlSystemDesigner('rlocus', system);
