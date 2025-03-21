@@ -1,20 +1,17 @@
-time = Kp.Time;
-response = Kp.Data;
-final_value = 180*2*pi/360;
+time = kp_1{2}.Values.Time;
+response = kp_1{2}.Values.Data;
+final_value = 60*2*pi/360;
 
 % Compute step response characteristics
 info = stepinfo(response, time);
 
-upper_bound = final_value * 1.0202115;
+upper_bound = final_value * 1.02;
 lower_bound = final_value * 0.98;
 settling_response = interp1(time, response, info.SettlingTime);
 
 % Compute steady-state response
 steady_state_response = response(end);
 steady_state_error = abs(final_value - steady_state_response);
-
-% Absolute tracking error
-absolute_tracking_error = abs(response - final_value);
 
 % Display results
 fprintf('Rise Time: %.4f sec\n', info.RiseTime);
